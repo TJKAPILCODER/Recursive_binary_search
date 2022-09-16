@@ -1,0 +1,25 @@
+# return true if target exists or false if it doesn't 
+def recursive_binary_search(list, target):
+    # check if list is empty
+    if len(list) == 0:
+        return False
+    else: # if list not empty 
+        midpoint = (len(list)) // 2
+        
+        if list[midpoint] == target:
+            return True
+        else:
+            if list[midpoint] < target:
+                return recursive_binary_search(list[midpoint + 1:], target)
+            else:
+                return recursive_binary_search(list[:midpoint], target)
+    
+def verify(result):
+    print("Target found", result)
+    
+numbers = [1,2,3,4,5,6,7,8]
+
+result = recursive_binary_search(numbers, 12)
+verify(result)
+result = recursive_binary_search(numbers, 6)
+verify(result)
